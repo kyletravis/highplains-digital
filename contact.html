@@ -183,7 +183,7 @@ textarea:-webkit-autofill {
                             Name, company, <span class="text-white/40 font-newsreader not-italic">what's stuck.</span>
                         </h2>
                         <p class="text-white/50 leading-relaxed font-light font-sans max-w-sm mb-8">
-                            The form opens your mail client to <a href="mailto:kyle@highplains.digital" class="text-white/70 hover:text-white underline underline-offset-4">kyle@highplains.digital</a>. Nothing is stored on this site.
+                            The form emails us directly. Prefer a mail client? <a href="mailto:kyle@highplains.digital" class="text-white/70 hover:text-white underline underline-offset-4">kyle@highplains.digital</a>.
                         </p>
                         <div class="space-y-6 border-t border-white/[0.06] pt-8">
                             <div>
@@ -205,6 +205,14 @@ textarea:-webkit-autofill {
                                     <input type="text" id="name" name="name" autocomplete="name" required class="w-full bg-[#09090b] border border-white/10 rounded-sm px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors font-sans" placeholder="Your name">
                                 </div>
                                 <div>
+                                    <label for="email" class="block text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3 font-medium font-sans">Email</label>
+                                    <input type="email" id="email" name="email" autocomplete="email" required class="w-full bg-[#09090b] border border-white/10 rounded-sm px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors font-sans" placeholder="you@company.com">
+                                </div>
+                                <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+                                    <label for="website">Website</label>
+                                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                                </div>
+                                <div>
                                     <label for="company" class="block text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3 font-medium font-sans">Company</label>
                                     <input type="text" id="company" name="company" autocomplete="organization" class="w-full bg-[#09090b] border border-white/10 rounded-sm px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors font-sans" placeholder="Company">
                                 </div>
@@ -215,7 +223,7 @@ textarea:-webkit-autofill {
                                 <button type="submit" class="group shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 overflow-hidden font-medium text-indigo-950 bg-gradient-to-r from-[#e0e7ff] to-[#a5b4fc] rounded-sm pt-3 pr-8 pb-3 pl-8 relative shadow-lg inline-flex items-center justify-center w-full sm:w-auto" style="box-shadow:0 15px 33px -12px rgba(99,102,241,0.6), inset 0 4px 6.3px rgba(255,255,255,0.8);">
                                     <div class="group-hover:translate-y-0 transition-transform duration-300 bg-white/40 absolute top-0 right-0 bottom-0 left-0 translate-y-full"></div>
                                     <span class="relative flex items-center gap-2 text-sm tracking-tight font-semibold font-sans">
-                                        Open in email
+                                        Send
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                                     </span>
                                 </button>
@@ -285,21 +293,42 @@ textarea:-webkit-autofill {
 
             const form = document.getElementById("contact-form");
             if (form) {
-                form.addEventListener("submit", (e) => {
+                const button = form.querySelector('button[type="submit"]');
+                const buttonLabel = button ? button.querySelector("span.relative") : null;
+                const status = document.createElement("p");
+                status.id = "contact-status";
+                status.className = "text-sm text-white/50 font-sans pt-2";
+                status.setAttribute("role", "status");
+                form.querySelector(".relative.z-10").appendChild(status);
+
+                form.addEventListener("submit", async (e) => {
                     e.preventDefault();
                     const name = (document.getElementById("name") || {}).value || "";
+                    const email = (document.getElementById("email") || {}).value || "";
                     const company = (document.getElementById("company") || {}).value || "";
                     const stuck = (document.getElementById("stuck") || {}).value || "";
-                    const subjectBits = ["High Plains Digital"];
-                    if (name.trim()) subjectBits.push(name.trim());
-                    if (company.trim()) subjectBits.push(company.trim());
-                    const subject = encodeURIComponent(subjectBits.join(" — "));
-                    const body = encodeURIComponent(
-                        "Name: " + name.trim() + "\n" +
-                        "Company: " + company.trim() + "\n\n" +
-                        "Where we're stuck:\n" + stuck.trim()
-                    );
-                    window.location.href = "mailto:kyle@highplains.digital?subject=" + subject + "&body=" + body;
+                    const website = (document.getElementById("website") || {}).value || "";
+                    status.textContent = "";
+                    if (button) button.disabled = true;
+                    if (buttonLabel) buttonLabel.childNodes[0].textContent = "Sending";
+                    try {
+                        const res = await fetch("/api/contact", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ name, email, company, stuck, website })
+                        });
+                        const data = await res.json().catch(() => ({}));
+                        if (!res.ok) throw new Error(data.error || "Could not send.");
+                        form.reset();
+                        status.className = "text-sm text-indigo-200/80 font-sans pt-2";
+                        status.textContent = "Sent. We’ll get back to you.";
+                    } catch (err) {
+                        status.className = "text-sm text-red-300/80 font-sans pt-2";
+                        status.textContent = err.message || "Could not send. Email kyle@highplains.digital.";
+                    } finally {
+                        if (button) button.disabled = false;
+                        if (buttonLabel) buttonLabel.childNodes[0].textContent = "Send";
+                    }
                 });
             }
         });
