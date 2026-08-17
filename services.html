@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What we do — High Plains Digital</title>
+<meta name="description" content="What we actually do when we show up: find the real problem, prototype in your environment, harden for production. High Plains Digital.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #020202;
+}
+.font-serif { font-family: 'Newsreader', serif; }
+.font-newsreader { font-family: 'Newsreader', serif; }
+.font-manrope { font-family: 'Manrope', sans-serif; }
+.spotlight-card {
+  position: relative;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.4),
+    transparent 40%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(225deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+.spotlight-card:hover::before { opacity: 1; }
+@keyframes animationIn {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+.animate-on-scroll { animation-play-state: paused !important; }
+.animate-on-scroll.animate { animation-play-state: running !important; }
+@keyframes beam-drop {
+  0% { top: -100px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.beam {
+  position: absolute;
+  width: 1px;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
+  animation: beam-drop 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.beam-delay-1 { animation-delay: 2s; }
+.beam-delay-2 { animation-delay: 4s; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+#mobile-menu { display: none; }
+#mobile-menu.open { display: block; }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #09090b inset !important;
+  -webkit-text-fill-color: white !important;
+}
+</style>
+</head>
+<body class="bg-[#020202] text-white selection:bg-indigo-500/30 selection:text-indigo-100 overflow-x-hidden">
+
+    <div class="border-x border-white/[0.03] min-h-screen w-full max-w-[1440px] mx-auto relative">
+
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:12rem_24rem] pointer-events-none z-0"></div>
+
+        <div class="absolute inset-0 flex justify-between pointer-events-none z-0 px-6 md:px-12 lg:px-24">
+            <div class="relative w-px h-full bg-white/[0.03] overflow-hidden"><div class="beam"></div></div>
+            <div class="relative w-px h-full bg-white/[0.03] hidden md:block overflow-hidden absolute left-1/2 -translate-x-1/2"><div class="beam beam-delay-1"></div></div>
+            <div class="relative w-px h-full bg-white/[0.03] overflow-hidden"><div class="beam beam-delay-2"></div></div>
+        </div>
+
+        <nav class="relative z-50 border-b border-white/[0.03] backdrop-blur-sm bg-[#020202]/80">
+            <div class="md:px-12 lg:px-24 flex h-20 pr-6 pl-6 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 [animation:animationIn_0.8s_ease-out_0s_both] animate-on-scroll animate">
+                    <img src="https://highplains.digital/assets/hpd_logo_white_transparent-DQ4_1mX2.png" alt="High Plains Digital" class="h-8 w-auto" onerror="this.style.display='none'">
+                    <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white font-sans">High Plains Digital</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-10 [animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
+                    <a href="work.html" class="text-[13px] hover:text-white transition-colors text-white/60">Work</a>
+                    <a href="how-we-work.html" class="text-[13px] hover:text-white transition-colors text-white/60">How we work</a>
+                    <a href="services.html" class="text-[13px] hover:text-white transition-colors text-white">What we do</a>
+                </div>
+
+                <div class="flex items-center gap-4 [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+                    <a href="contact.html" class="group hidden sm:inline-flex overflow-hidden transition-all duration-300 hover:-translate-y-0.5 rounded-sm p-[1px] relative items-center justify-center">
+                        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ffffff_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                        <span class="absolute inset-0 rounded-sm bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+                        <span class="flex items-center justify-center gap-2 transition-colors duration-300 group-hover:text-white text-[11px] font-medium text-zinc-300 tracking-tight bg-black w-full h-full rounded-sm pt-2 pr-4 pb-2 pl-4 relative">
+                            <span class="relative z-10 uppercase tracking-widest font-sans">Start a conversation</span>
+                        </span>
+                    </a>
+                    <button type="button" id="menu-toggle" class="md:hidden w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-white/70" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden border-t border-white/[0.03] bg-[#020202]/95 px-6 py-6 space-y-4">
+                <a href="work.html" class="block text-[13px] text-white/70 hover:text-white">Work</a>
+                <a href="how-we-work.html" class="block text-[13px] text-white/70 hover:text-white">How we work</a>
+                <a href="services.html" class="block text-[13px] text-white hover:text-white">What we do</a>
+                <a href="contact.html" class="block text-[13px] text-white hover:text-white">Start a conversation</a>
+            </div>
+        </nav>
+
+        <main class="z-10 relative">
+
+            <section class="md:px-12 lg:px-24 md:py-32 grid lg:grid-cols-12 gap-12 border-white/[0.03] border-b pt-24 pr-6 pb-24 pl-6 items-end">
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <div class="[animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-indigo-900/40 bg-indigo-900/10 text-[10px] font-medium tracking-widest text-indigo-200/80 uppercase font-sans">
+                            <span class="w-1 h-1 rounded-full bg-indigo-400"></span>
+                            What we do
+                        </span>
+                    </div>
+                    <h1 class="font-serif text-[2.75rem] sm:text-5xl lg:text-7xl leading-[0.95] text-white tracking-tight [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+                        <span class="block text-white/80 font-newsreader font-light">What we actually do</span>
+                        <span class="block font-light italic font-newsreader">when we show up.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-white/50 max-w-xl leading-relaxed font-light [animation:animationIn_0.8s_ease-out_0.3s_both] animate-on-scroll animate font-sans">
+                        Not a productized platform. Not a monthly plan. Work scoped to the problem: find it, prototype it in your environment, harden it so the team can run it.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-5 pt-4 [animation:animationIn_0.8s_ease-out_0.5s_both] animate-on-scroll animate">
+                        <a href="contact.html" class="group shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 overflow-hidden font-medium text-indigo-950 bg-gradient-to-r from-[#e0e7ff] to-[#a5b4fc] rounded-sm pt-3 pr-8 pb-3 pl-8 relative shadow-lg inline-flex items-center justify-center" style="box-shadow:0 15px 33px -12px rgba(99,102,241,0.6), inset 0 4px 6.3px rgba(255,255,255,0.8);">
+                            <div class="group-hover:translate-y-0 transition-transform duration-300 bg-white/40 absolute top-0 right-0 bottom-0 left-0 translate-y-full"></div>
+                            <span class="relative flex items-center gap-2 text-sm tracking-tight font-semibold font-sans">
+                                Start a conversation
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </a>
+                        <a href="how-we-work.html" class="group inline-flex overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(255,255,255,0.1)] rounded-sm p-[1px] relative items-center justify-center">
+                            <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ffffff_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                            <span class="absolute inset-0 rounded-sm bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+                            <span class="flex items-center justify-center gap-2 transition-colors duration-300 group-hover:text-white text-sm font-medium text-zinc-400 tracking-tight bg-gradient-to-b from-zinc-800 to-zinc-950 w-full h-full rounded-sm pt-3 pr-8 pb-3 pl-8 relative shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                              <span class="relative z-10 font-sans">See how we work</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-4 flex flex-col justify-end gap-12 [animation:animationIn_0.8s_ease-out_0.7s_both] animate-on-scroll animate">
+                    <div class="grid grid-cols-2 lg:grid-cols-1 gap-12 border-t border-white/[0.05] pt-8 lg:border-t-0 lg:pt-0">
+                        <div>
+                            <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2 font-medium font-sans">What this is</div>
+                            <div class="text-3xl sm:text-4xl italic text-white font-newsreader leading-tight">A studio<br><span class="not-italic text-white/50 font-light">that ships</span></div>
+                        </div>
+                        <div>
+                            <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2 font-medium font-sans">What this is not</div>
+                            <div class="text-3xl sm:text-4xl italic text-white font-newsreader leading-tight">Monthly plans<br><span class="not-italic text-white/50 font-light text-2xl">or productized SaaS</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="border-white/[0.03] border-b bg-[#020202]">
+                <div class="md:px-12 lg:px-24 pt-24 pr-6 pl-6 pb-8">
+                    <div class="[animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll mb-4">
+                        <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-6 font-medium font-sans">Offerings</div>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl text-white font-newsreader italic tracking-tight font-light leading-[1.05] max-w-3xl">
+                            Honest work. <span class="text-white/40 font-newsreader not-italic">Not a catalog.</span>
+                        </h2>
+                    </div>
+                    <p class="text-white/50 max-w-xl leading-relaxed font-light font-sans mb-4 [animation:animationIn_0.8s_ease-out_0.3s_both] animate-on-scroll">
+                        Four things we actually do when we show up. Scoped to the problem. Priced as work, not as a subscription.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 md:px-12 lg:px-24 px-6 pb-24 gap-6">
+
+                    <div class="spotlight-card group p-8 lg:p-12 rounded-sm [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll">
+                        <span class="absolute top-8 right-8 text-[11px] font-mono text-white/20 font-sans">01</span>
+                        <div class="relative z-10 flex flex-col h-full justify-between gap-16">
+                            <div class="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/90 rounded-sm group-hover:scale-110 transition-transform duration-500">
+                                <i data-lucide="search" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-white mb-3 font-serif italic tracking-wide">Find the real problem</h3>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">Discovery in the workflow, not in a conference room far from the data. Sit with the people who do the work. Watch what actually happens. Name the constraint that blocks value — not the one that photographs well.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spotlight-card group p-8 lg:p-12 rounded-sm [animation:animationIn_0.8s_ease-out_0.3s_both] animate-on-scroll">
+                        <span class="absolute top-8 right-8 text-[11px] font-mono text-white/20 font-sans">02</span>
+                        <div class="relative z-10 flex flex-col h-full justify-between gap-16">
+                            <div class="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/90 rounded-sm group-hover:scale-110 transition-transform duration-500">
+                                <i data-lucide="box" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-white mb-3 font-serif italic tracking-wide">Prototype in their environment</h3>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">Build where the data already lives. Same systems, same constraints, same operators. A prototype that only works in a lab is still a demo. If it cannot run in their stack, it is not finished.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spotlight-card group p-8 lg:p-12 rounded-sm [animation:animationIn_0.8s_ease-out_0.4s_both] animate-on-scroll">
+                        <span class="absolute top-8 right-8 text-[11px] font-mono text-white/20 font-sans">03</span>
+                        <div class="relative z-10 flex flex-col h-full justify-between gap-16">
+                            <div class="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/90 rounded-sm group-hover:scale-110 transition-transform duration-500">
+                                <i data-lucide="shield-check" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-white mb-3 font-serif italic tracking-wide">Harden for production</h3>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">Observability, ownership, and the unglamorous work that lets it run on a Tuesday when nobody is watching. Then we hand it off. Success is a system the team can operate without us hovering.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="spotlight-card group p-8 lg:p-12 rounded-sm [animation:animationIn_0.8s_ease-out_0.5s_both] animate-on-scroll">
+                        <span class="absolute top-8 right-8 text-[11px] font-mono text-white/20 font-sans">04</span>
+                        <div class="relative z-10 flex flex-col h-full justify-between gap-16">
+                            <div class="w-12 h-12 bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/90 rounded-sm group-hover:scale-110 transition-transform duration-500">
+                                <i data-lucide="messages-square" class="w-6 h-6 stroke-[1.5]"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-white mb-3 font-serif italic tracking-wide">Executive-to-engineer translation</h3>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">Stakeholder-ready artifacts that tell the truth: what the system does, what it does not, who owns it, and what it takes to keep it running. Not a product. The communication layer that keeps a technical team and a leadership team on the same page.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="p-6 md:p-12 lg:p-24 bg-[#050505] border-b border-white/[0.03]">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    <div class="lg:col-span-5 [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll">
+                        <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-6 font-medium font-sans">How we engage</div>
+                        <h2 class="text-4xl md:text-5xl text-white font-newsreader italic tracking-tight font-light leading-[1.05]">
+                            Scoped to the problem. <span class="text-white/40 font-newsreader not-italic">Then done.</span>
+                        </h2>
+                    </div>
+                    <div class="lg:col-span-7 [animation:animationIn_0.8s_ease-out_0.3s_both] animate-on-scroll">
+                        <p class="text-lg text-white/50 leading-relaxed font-light font-sans max-w-xl mb-10">
+                            We do not sell seats, tiers, or a monthly AI platform. An engagement starts with the stuck place, ends when the team can run what we built, and does not quietly turn into staff-aug.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-8 border-t border-white/[0.06] pt-10">
+                            <div>
+                                <h3 class="text-white font-serif italic text-xl mb-3">What you get</h3>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">A working slice in your environment, ownership named, and enough documentation that the next Tuesday does not require us on the call.</p>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-serif italic text-xl mb-3">What you do not get</h3>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">A retainer that never ends, a slide deck in place of a system, or a productized plan with a price on a pricing page.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="md:px-12 lg:px-24 border-white/[0.03] border-b bg-[#020202] pt-24 pr-6 pb-24 pl-6 relative overflow-hidden">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                <div class="max-w-3xl mx-auto text-center [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-6 font-medium font-sans">Next</div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl text-white font-newsreader italic tracking-tight font-light leading-[1.05] mb-6">
+                        Tell us where you're stuck.
+                    </h2>
+                    <p class="text-lg text-white/50 leading-relaxed font-light font-sans max-w-xl mx-auto mb-10">
+                        If the problem is between a promising demo and something the business can run, that is the conversation.
+                    </p>
+                    <a href="contact.html" class="group shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 overflow-hidden font-medium text-indigo-950 bg-gradient-to-r from-[#e0e7ff] to-[#a5b4fc] rounded-sm pt-3 pr-8 pb-3 pl-8 relative shadow-lg inline-flex items-center justify-center" style="box-shadow:0 15px 33px -12px rgba(99,102,241,0.6), inset 0 4px 6.3px rgba(255,255,255,0.8);">
+                            <div class="group-hover:translate-y-0 transition-transform duration-300 bg-white/40 absolute top-0 right-0 bottom-0 left-0 translate-y-full"></div>
+                            <span class="relative flex items-center gap-2 text-sm tracking-tight font-semibold font-sans">
+                                Start a conversation
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="relative bg-[#050505] overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent"></div>
+            <div class="relative z-10 md:px-12 lg:px-24 px-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 py-12 border-b border-white/[0.03]">
+                    <div>
+                        <div class="text-xs font-semibold tracking-[0.15em] uppercase text-white mb-2 font-sans">High Plains Digital, LLC</div>
+                        <div class="text-[13px] text-white/40 font-sans">Built in Kansas. Built to last.</div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-8">
+                        <a href="work.html" class="text-[13px] text-white/40 hover:text-white transition-colors">Work</a>
+                        <a href="how-we-work.html" class="text-[13px] text-white/40 hover:text-white transition-colors">How we work</a>
+                        <a href="services.html" class="text-[13px] text-white/40 hover:text-white transition-colors">What we do</a>
+                        <a href="contact.html" class="text-[13px] text-white/40 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 py-8">
+                    <span class="text-[11px] text-white/30 font-sans">© 2026 High Plains Digital, LLC</span>
+                    <span class="text-[11px] text-white/25 font-sans tracking-widest uppercase">highplains.digital</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+
+            document.querySelectorAll(".animate-on-scroll").forEach((el) => observer.observe(el));
+
+            const cards = document.querySelectorAll(".spotlight-card");
+            document.addEventListener("mousemove", (e) => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+                    card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+                });
+            });
+
+            const toggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("mobile-menu");
+            if (toggle && menu) {
+                toggle.addEventListener("click", () => {
+                    const open = menu.classList.toggle("open");
+                    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+                });
+            }
+
+            const form = document.getElementById("contact-form");
+            if (form) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const name = (document.getElementById("name") || {}).value || "";
+                    const company = (document.getElementById("company") || {}).value || "";
+                    const stuck = (document.getElementById("stuck") || {}).value || "";
+                    const subjectBits = ["High Plains Digital"];
+                    if (name.trim()) subjectBits.push(name.trim());
+                    if (company.trim()) subjectBits.push(company.trim());
+                    const subject = encodeURIComponent(subjectBits.join(" — "));
+                    const body = encodeURIComponent(
+                        "Name: " + name.trim() + "\n" +
+                        "Company: " + company.trim() + "\n\n" +
+                        "Where we're stuck:\n" + stuck.trim()
+                    );
+                    window.location.href = "mailto:kyle@kyletravis.com?subject=" + subject + "&body=" + body;
+                });
+            }
+        });
+    </script>
+</body>
+</html>

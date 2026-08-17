@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — High Plains Digital</title>
+<meta name="description" content="Start a conversation with High Plains Digital. Tell us where you are stuck between the demo and something the business can run. kyle@kyletravis.com">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #020202;
+}
+.font-serif { font-family: 'Newsreader', serif; }
+.font-newsreader { font-family: 'Newsreader', serif; }
+.font-manrope { font-family: 'Manrope', sans-serif; }
+.spotlight-card {
+  position: relative;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.4),
+    transparent 40%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(225deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+.spotlight-card:hover::before { opacity: 1; }
+@keyframes animationIn {
+  0% { opacity: 0; transform: translateY(20px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+.animate-on-scroll { animation-play-state: paused !important; }
+.animate-on-scroll.animate { animation-play-state: running !important; }
+@keyframes beam-drop {
+  0% { top: -100px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.beam {
+  position: absolute;
+  width: 1px;
+  height: 150px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5), transparent);
+  animation: beam-drop 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+.beam-delay-1 { animation-delay: 2s; }
+.beam-delay-2 { animation-delay: 4s; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+#mobile-menu { display: none; }
+#mobile-menu.open { display: block; }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #09090b inset !important;
+  -webkit-text-fill-color: white !important;
+}
+</style>
+</head>
+<body class="bg-[#020202] text-white selection:bg-indigo-500/30 selection:text-indigo-100 overflow-x-hidden">
+
+    <div class="border-x border-white/[0.03] min-h-screen w-full max-w-[1440px] mx-auto relative">
+
+        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:12rem_24rem] pointer-events-none z-0"></div>
+
+        <div class="absolute inset-0 flex justify-between pointer-events-none z-0 px-6 md:px-12 lg:px-24">
+            <div class="relative w-px h-full bg-white/[0.03] overflow-hidden"><div class="beam"></div></div>
+            <div class="relative w-px h-full bg-white/[0.03] hidden md:block overflow-hidden absolute left-1/2 -translate-x-1/2"><div class="beam beam-delay-1"></div></div>
+            <div class="relative w-px h-full bg-white/[0.03] overflow-hidden"><div class="beam beam-delay-2"></div></div>
+        </div>
+
+        <nav class="relative z-50 border-b border-white/[0.03] backdrop-blur-sm bg-[#020202]/80">
+            <div class="md:px-12 lg:px-24 flex h-20 pr-6 pl-6 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 [animation:animationIn_0.8s_ease-out_0s_both] animate-on-scroll animate">
+                    <img src="https://highplains.digital/assets/hpd_logo_white_transparent-DQ4_1mX2.png" alt="High Plains Digital" class="h-8 w-auto" onerror="this.style.display='none'">
+                    <span class="text-xs font-semibold tracking-[0.15em] uppercase text-white font-sans">High Plains Digital</span>
+                </a>
+
+                <div class="hidden md:flex items-center gap-10 [animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
+                    <a href="work.html" class="text-[13px] hover:text-white transition-colors text-white/60">Work</a>
+                    <a href="how-we-work.html" class="text-[13px] hover:text-white transition-colors text-white/60">How we work</a>
+                    <a href="services.html" class="text-[13px] hover:text-white transition-colors text-white/60">What we do</a>
+                </div>
+
+                <div class="flex items-center gap-4 [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+                    <a href="contact.html" class="group hidden sm:inline-flex overflow-hidden transition-all duration-300 hover:-translate-y-0.5 rounded-sm p-[1px] relative items-center justify-center">
+                        <span class="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ffffff_100%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"></span>
+                        <span class="absolute inset-0 rounded-sm bg-zinc-800 transition-opacity duration-300 group-hover:opacity-0"></span>
+                        <span class="flex items-center justify-center gap-2 transition-colors duration-300 group-hover:text-white text-[11px] font-medium text-white tracking-tight bg-black w-full h-full rounded-sm pt-2 pr-4 pb-2 pl-4 relative">
+                            <span class="relative z-10 uppercase tracking-widest font-sans">Start a conversation</span>
+                        </span>
+                    </a>
+                    <button type="button" id="menu-toggle" class="md:hidden w-10 h-10 border border-white/10 rounded-sm flex items-center justify-center text-white/70" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden border-t border-white/[0.03] bg-[#020202]/95 px-6 py-6 space-y-4">
+                <a href="work.html" class="block text-[13px] text-white/70 hover:text-white">Work</a>
+                <a href="how-we-work.html" class="block text-[13px] text-white/70 hover:text-white">How we work</a>
+                <a href="services.html" class="block text-[13px] text-white/70 hover:text-white">What we do</a>
+                <a href="contact.html" class="block text-[13px] text-white hover:text-white">Start a conversation</a>
+            </div>
+        </nav>
+
+        <main class="z-10 relative">
+
+            <section class="md:px-12 lg:px-24 md:py-32 grid lg:grid-cols-12 gap-12 border-white/[0.03] border-b pt-24 pr-6 pb-24 pl-6 items-end">
+                <div class="lg:col-span-8 flex flex-col gap-8">
+                    <div class="[animation:animationIn_0.8s_ease-out_0.1s_both] animate-on-scroll animate">
+                        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-indigo-900/40 bg-indigo-900/10 text-[10px] font-medium tracking-widest text-indigo-200/80 uppercase font-sans">
+                            <span class="w-1 h-1 rounded-full bg-indigo-400"></span>
+                            Contact
+                        </span>
+                    </div>
+                    <h1 class="font-serif text-[2.75rem] sm:text-5xl lg:text-7xl leading-[0.95] text-white tracking-tight [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll animate">
+                        <span class="block text-white/80 font-newsreader font-light">Start a</span>
+                        <span class="block font-light italic font-newsreader">conversation.</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-white/50 max-w-xl leading-relaxed font-light [animation:animationIn_0.8s_ease-out_0.3s_both] animate-on-scroll animate font-sans">
+                        A short note is enough. Tell us where you are stuck between the demo and something the business can run.
+                    </p>
+                </div>
+                <div class="lg:col-span-4 flex flex-col justify-end gap-12 [animation:animationIn_0.8s_ease-out_0.7s_both] animate-on-scroll animate">
+                    <div class="grid grid-cols-1 gap-12 border-t border-white/[0.05] pt-8 lg:border-t-0 lg:pt-0">
+                        <div>
+                            <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2 font-medium font-sans">Email</div>
+                            <a href="mailto:kyle@kyletravis.com" class="text-2xl sm:text-3xl italic text-white font-newsreader leading-tight hover:text-white/80 transition-colors">kyle@kyletravis.com</a>
+                        </div>
+                        <div>
+                            <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-2 font-medium font-sans">Where</div>
+                            <div class="text-3xl sm:text-4xl italic text-white font-newsreader leading-tight">Kansas<br><span class="not-italic text-white/50 font-light text-2xl">forward-deployed</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="md:px-12 lg:px-24 border-white/[0.03] border-b bg-[#020202] pt-24 pr-6 pb-24 pl-6">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                    <div class="lg:col-span-5 [animation:animationIn_0.8s_ease-out_0.2s_both] animate-on-scroll">
+                        <div class="text-[10px] uppercase tracking-[0.2em] text-white/40 mb-6 font-medium font-sans">Write us</div>
+                        <h2 class="text-4xl md:text-5xl text-white font-newsreader italic tracking-tight font-light leading-[1.05] mb-6">
+                            Name, company, <span class="text-white/40 font-newsreader not-italic">what's stuck.</span>
+                        </h2>
+                        <p class="text-white/50 leading-relaxed font-light font-sans max-w-sm mb-8">
+                            The form opens your mail client to <a href="mailto:kyle@kyletravis.com" class="text-white/70 hover:text-white underline underline-offset-4">kyle@kyletravis.com</a>. Nothing is stored on this site.
+                        </p>
+                        <div class="space-y-6 border-t border-white/[0.06] pt-8">
+                            <div>
+                                <div class="text-[10px] uppercase tracking-[0.2em] text-indigo-300/70 mb-2 font-medium font-sans">01</div>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">A short conversation. The real workflow.</p>
+                            </div>
+                            <div>
+                                <div class="text-[10px] uppercase tracking-[0.2em] text-indigo-300/70 mb-2 font-medium font-sans">02</div>
+                                <p class="text-[14px] text-white/50 leading-relaxed font-sans">Whether we can help you close the gap from demo to something the business can run.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 [animation:animationIn_0.8s_ease-out_0.3s_both] animate-on-scroll">
+                        <form id="contact-form" class="spotlight-card p-8 lg:p-12 rounded-sm space-y-6" novalidate>
+                            <div class="relative z-10 space-y-6">
+                                <div>
+                                    <label for="name" class="block text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3 font-medium font-sans">Name</label>
+                                    <input type="text" id="name" name="name" autocomplete="name" required class="w-full bg-[#09090b] border border-white/10 rounded-sm px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors font-sans" placeholder="Your name">
+                                </div>
+                                <div>
+                                    <label for="company" class="block text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3 font-medium font-sans">Company</label>
+                                    <input type="text" id="company" name="company" autocomplete="organization" class="w-full bg-[#09090b] border border-white/10 rounded-sm px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors font-sans" placeholder="Company">
+                                </div>
+                                <div>
+                                    <label for="stuck" class="block text-[10px] uppercase tracking-[0.2em] text-white/40 mb-3 font-medium font-sans">What's stuck</label>
+                                    <textarea id="stuck" name="stuck" rows="6" required class="w-full bg-[#09090b] border border-white/10 rounded-sm px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-white/30 transition-colors font-sans resize-y min-h-[140px]" placeholder="The demo, the workflow, the constraint."></textarea>
+                                </div>
+                                <button type="submit" class="group shadow-indigo-500/20 hover:shadow-indigo-500/40 transition-all duration-300 overflow-hidden font-medium text-indigo-950 bg-gradient-to-r from-[#e0e7ff] to-[#a5b4fc] rounded-sm pt-3 pr-8 pb-3 pl-8 relative shadow-lg inline-flex items-center justify-center w-full sm:w-auto" style="box-shadow:0 15px 33px -12px rgba(99,102,241,0.6), inset 0 4px 6.3px rgba(255,255,255,0.8);">
+                                    <div class="group-hover:translate-y-0 transition-transform duration-300 bg-white/40 absolute top-0 right-0 bottom-0 left-0 translate-y-full"></div>
+                                    <span class="relative flex items-center gap-2 text-sm tracking-tight font-semibold font-sans">
+                                        Open in email
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="relative bg-[#050505] overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-indigo-500/40 to-transparent"></div>
+            <div class="relative z-10 md:px-12 lg:px-24 px-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 py-12 border-b border-white/[0.03]">
+                    <div>
+                        <div class="text-xs font-semibold tracking-[0.15em] uppercase text-white mb-2 font-sans">High Plains Digital, LLC</div>
+                        <div class="text-[13px] text-white/40 font-sans">Built in Kansas. Built to last.</div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-8">
+                        <a href="work.html" class="text-[13px] text-white/40 hover:text-white transition-colors">Work</a>
+                        <a href="how-we-work.html" class="text-[13px] text-white/40 hover:text-white transition-colors">How we work</a>
+                        <a href="services.html" class="text-[13px] text-white/40 hover:text-white transition-colors">What we do</a>
+                        <a href="contact.html" class="text-[13px] text-white/40 hover:text-white transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 py-8">
+                    <span class="text-[11px] text-white/30 font-sans">© 2026 High Plains Digital, LLC</span>
+                    <span class="text-[11px] text-white/25 font-sans tracking-widest uppercase">highplains.digital</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.lucide) lucide.createIcons();
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("animate");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+
+            document.querySelectorAll(".animate-on-scroll").forEach((el) => observer.observe(el));
+
+            const cards = document.querySelectorAll(".spotlight-card");
+            document.addEventListener("mousemove", (e) => {
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+                    card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+                });
+            });
+
+            const toggle = document.getElementById("menu-toggle");
+            const menu = document.getElementById("mobile-menu");
+            if (toggle && menu) {
+                toggle.addEventListener("click", () => {
+                    const open = menu.classList.toggle("open");
+                    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+                });
+            }
+
+            const form = document.getElementById("contact-form");
+            if (form) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const name = (document.getElementById("name") || {}).value || "";
+                    const company = (document.getElementById("company") || {}).value || "";
+                    const stuck = (document.getElementById("stuck") || {}).value || "";
+                    const subjectBits = ["High Plains Digital"];
+                    if (name.trim()) subjectBits.push(name.trim());
+                    if (company.trim()) subjectBits.push(company.trim());
+                    const subject = encodeURIComponent(subjectBits.join(" — "));
+                    const body = encodeURIComponent(
+                        "Name: " + name.trim() + "\n" +
+                        "Company: " + company.trim() + "\n\n" +
+                        "Where we're stuck:\n" + stuck.trim()
+                    );
+                    window.location.href = "mailto:kyle@kyletravis.com?subject=" + subject + "&body=" + body;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
