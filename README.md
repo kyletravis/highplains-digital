@@ -14,7 +14,7 @@ All pages are complete. Open any HTML file in a browser (needs network for Tailw
 | `how-we-work.html` | Process |
 | `services.html` | What we do |
 | `work.html` | Problem shapes |
-| `contact.html` | Mailto form |
+| `contact.html` | Contact form (Resend via `/api/contact`) |
 
 ## Deploy
 
@@ -22,3 +22,16 @@ All pages are complete. Open any HTML file in a browser (needs network for Tailw
 - **GitHub Pages:** serve the HTML files as-is from the repo root or `/docs`.
 
 Visual system is shared across pages (CDN Tailwind, Inter / Manrope / Newsreader, same nav and footer). Copy is High Plains Digital. No Nexus, no pricing, no invented case studies.
+
+
+## Contact form (Resend)
+
+`api/contact.js` sends the form to kyle@highplains.digital.
+
+In the Vercel project, add:
+
+- `RESEND_API_KEY` — from Resend
+- `RESEND_FROM` — optional, default `High Plains Digital <forms@highplains.digital>`
+- `CONTACT_TO` — optional, default `kyle@highplains.digital`
+
+Verify `highplains.digital` in Resend so the from-address is allowed.
